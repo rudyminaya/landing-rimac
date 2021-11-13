@@ -1,0 +1,96 @@
+@import 'variables';
+
+.features {
+    background: $main;
+    position: relative;
+    border-radius: 0 0 50px 50px;
+
+    &__content {
+        padding: 10px 20px 20px;
+        max-width: 450px;
+        margin: 0 auto;
+        & > h3 {
+            padding: 20px 0;
+        }
+        & > h3,
+        & > h3 > span {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+        }
+    }
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding-bottom: 20px;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        & > img {
+            max-width: 40px;
+            height: auto;
+        }
+        & > p {
+            color: #fff;
+            text-align: center;
+        }
+    }
+    &__illustration {
+        display: none;
+    }
+}
+@media (min-width: 1024px) {
+    .features {
+        max-width: 50vw;
+        width: 100%;
+        background-color: transparent;
+        position: relative;
+        &::after {
+            content: '';
+            width: 110%;
+            height: 100%;
+            background: $main;
+            position: absolute;
+            top: 0;
+            left: -15%;
+            border-radius: 0 0 50px 0;
+            z-index: 0;
+            transform: skew(-5deg);
+        }
+        &__content {
+            position: relative;
+            z-index: 2;
+            padding: 100px 0;
+
+            & > h3,
+            & > h3 > span {
+                font-size: 4rem;
+                text-align: left;
+            }
+            & > h3 > span {
+                font-weight: 600;
+            }
+        }
+        &__items {
+            display: flex;
+            flex-direction: column;
+            padding: 40px 0;
+        }
+        &__item {
+            flex-direction: row;
+            gap: 20px;
+        }
+        &__illustration {
+            display: block;
+            position: absolute;
+            bottom: 40px;
+            z-index: 2;
+            right: -100px;
+        }
+    }
+}

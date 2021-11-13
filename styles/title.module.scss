@@ -1,0 +1,17 @@
+@import 'variables';
+.title {
+    font-weight: 200;
+    color: $gray;
+    font-size: 1.8rem;
+
+    & > span {
+        font-weight: 400;
+        color: $main;
+    }
+}
+.subtitle {
+    color: $gray;
+    font-weight: 100;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}

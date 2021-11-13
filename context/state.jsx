@@ -5,7 +5,6 @@ const initialState = {
         userForm: {
             documentType: 'dni',
             name: null,
-            /* seguir definiendo esta wa (estado inicial)*/
         },
     },
 }

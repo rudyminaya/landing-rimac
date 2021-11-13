@@ -1,0 +1,99 @@
+@import 'variables';
+.table {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form {
+    &__select {
+        position: relative;
+        width: fit-content;
+
+        & select {
+            appearance: none;
+            border: 1px solid $gray_hard;
+            background: white;
+            height: 40px;
+            width: 100px;
+            display: flex;
+            border-radius: 10px 0 0 10px;
+            padding-left: 20px;
+            font-size: 1rem;
+            color: $gray_hard;
+            cursor: pointer;
+            padding-right: 15px;
+        }
+
+        &::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border: solid $main;
+            border-top: transparent;
+            border-left: transparent;
+            border-radius: 3px;
+            background: white;
+            position: absolute;
+            transform: rotate(45deg);
+            right: 15px;
+            bottom: 15px;
+            pointer-events: none;
+        }
+    }
+    &__select,
+    &__input {
+        margin: 25px 0;
+    }
+    &__input {
+        border-radius: 10px;
+        border: 1px solid $gray_hard;
+        background: white;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        & .text {
+            border: transparent;
+            display: block;
+            height: 40px;
+            width: 100%;
+            background: transparent;
+            padding-left: 20px;
+            color: $gray_hard;
+            font-size: 1.1rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+        & .label {
+            position: absolute;
+            color: $gray;
+            pointer-events: none;
+            left: 10px;
+            font-size: 1rem;
+            background-color: white;
+            padding: 0 10px;
+        }
+        & .text[type='date'] {
+            cursor: text;
+            font-size: 1.1rem;
+
+            &::-webkit-calendar-picker-indicator {
+                background: transparent;
+                color: rgba(0, 0, 0, 0);
+                opacity: 1;
+                border: 1px solid $main;
+            }
+
+            &:focus {
+                color: $gray;
+                font-size: 0.8rem;
+            }
+            & ~ .label {
+                bottom: 30px;
+            }
+        }
+    }
+}
