@@ -11,6 +11,8 @@ interface SubTitle {
     titulo: string
 }
 
+interface SamllTitle extends SubTitle {}
+
 const Title = (props: Props) => {
     return (
         <h3 className={styles.title}>
@@ -24,4 +26,8 @@ export default Title
 
 export const Subtitle = (props: SubTitle) => {
     return <h4 className={styles.subtitle}>{props.titulo}</h4>
+}
+
+export const SmallTitle = (props: SamllTitle) => {
+    return <p className={styles.smallTitle}>{props.titulo}</p>
 }

@@ -9,9 +9,13 @@
         color: $main;
     }
 }
-.subtitle {
+.subtitle,
+.smallTitle {
+    padding-bottom: 20px;
+    padding-top: 10px;
     color: $gray;
     font-weight: 100;
-    padding-top: 10px;
-    padding-bottom: 20px;
+}
+.smallTitle {
+    font-size: 0.9rem;
 }
