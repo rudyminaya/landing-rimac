@@ -3,6 +3,7 @@ import styles from '../../styles/form.module.scss'
 import Register from './register'
 import FirstStep from './firstStep'
 import SecondStep from './secondStep'
+import Thanks from './thanks'
 
 interface Props {}
 interface IDatosPersonales {
@@ -43,7 +44,8 @@ const Form = (props: Props) => {
         <div className={styles.form}>
             {/* <Register /> */}
             {/* <FirstStep datos={datosPersonales} nombre={nombreCorto} /> */}
-            <SecondStep nombre={nombreCorto} />
+            {/* <SecondStep nombre={nombreCorto} /> */}
+            <Thanks />
         </div>
     )
 }

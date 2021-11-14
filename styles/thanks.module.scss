@@ -1,0 +1,36 @@
+@import 'variables';
+
+.thanks {
+    max-width: 500px;
+    margin: 20px auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    & > h3 {
+        padding-top: 20px;
+        border-top: 1px solid $gray;
+        font-size: 2.3rem;
+    }
+    &__parrafo {
+        color: $gray_hard;
+        font-weight: 100;
+    }
+    & > a {
+        margin: 40px auto;
+        margin-bottom: 0;
+    }
+}
+@media (min-width: 1024px) {
+    .thanks {
+        & > h3 {
+            padding-top: 40px;
+        }
+        & > a {
+            margin-right: 0;
+        }
+    }
+}

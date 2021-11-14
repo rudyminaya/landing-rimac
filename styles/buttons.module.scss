@@ -12,15 +12,21 @@
     }
 }
 .mailbtn,
-.submit {
+.submit,
+.homebtn {
     border: none;
     padding: 20px;
     border-radius: 10px;
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: 600;
+    width: fit-content;
 }
 .mailbtn {
     color: $gray_hard;
     background: white;
+}
+.homebtn {
+    background: $main;
+    color: white;
 }
