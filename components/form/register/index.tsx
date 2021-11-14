@@ -5,8 +5,6 @@ import Title, { Subtitle } from '../../tools/title'
 import { Submitbtn } from '../../tools/button'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
-interface Props {}
-
 type Inputs = {
     ndoi: string
     date: string
@@ -15,7 +13,7 @@ type Inputs = {
     tycpolitica: string
 }
 
-const Register = (props: Props) => {
+const Register = () => {
     let today = new Date()
     let day = today.getDate()
     let month = today.getMonth() + 1

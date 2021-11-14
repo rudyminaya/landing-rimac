@@ -1,0 +1,68 @@
+[
+    {
+        "type": "Básico",
+        "price": "160",
+        "currency": "S/",
+        "period": "mensual",
+        "coverage": "1MM",
+        "icon": "basico",
+        "benefits": [
+            "Lima (zona de cobertura)",
+            "+30 clínicas (en red afiliada)"
+        ],
+        "nobenefits": [
+            "Médico a domicilio",
+            "Chequeos preventivos",
+            "Reembolso nacional",
+            "Reembolso internacional"
+        ]
+    },
+    {
+        "type": "Avanzado",
+        "price": "200",
+        "currency": "S/",
+        "period": "mensual",
+        "coverage": "5MM",
+        "icon": "avanzado",
+        "benefits": [
+            "Lima (zona de cobertura)",
+            "+30 clínicas (en red afiliada)",
+            "Médico a domicilio",
+            "Chequeos preventivos"
+        ],
+        "nobenefits": ["Reembolso nacional", "Reembolso internacional"]
+    },
+    {
+        "type": "Premium",
+        "price": "250",
+        "currency": "S/",
+        "period": "mensual",
+        "coverage": "7MM",
+        "icon": "premium",
+        "benefits": [
+            "Lima (zona de cobertura)",
+            "+30 clínicas (en red afiliada)",
+            "Médico a domicilio",
+            "Chequeos preventivos",
+            "Reembolso nacional"
+        ],
+        "nobenefits": ["Reembolso internacional"]
+    },
+    {
+        "type": "Full",
+        "price": "500",
+        "currency": "S/",
+        "period": "mensual",
+        "coverage": "10MM",
+        "icon": "full",
+        "benefits": [
+            "Lima (zona de cobertura)",
+            "+30 clínicas (en red afiliada)",
+            "Médico a domicilio",
+            "Chequeos preventivos",
+            "Reembolso nacional",
+            "Reembolso internacional"
+        ],
+        "nobenefits": []
+    }
+]

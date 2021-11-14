@@ -1,10 +1,16 @@
 @import 'variables';
-.table {
-    max-width: 450px;
+
+.table,
+.steps {
     margin: 0 auto;
     padding: 20px;
 }
-
+.table {
+    max-width: 450px;
+}
+.steps {
+    max-width: 600px;
+}
 .form {
     &__select {
         position: relative;
@@ -229,8 +235,7 @@
             height: 25px;
             font-size: 1rem;
             display: flex;
-            position: absolute;
-            left: -35px;
+            margin-right: 5px;
             border: 1px solid $main;
             justify-content: center;
             align-items: center;
@@ -250,8 +255,28 @@
         }
     }
 }
+.boxButtons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+}
+@media (min-width: 768px) {
+    .boxButtons {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
 @media (min-width: 1024px) {
     .form {
         padding: 60px 0;
+
+        &__breadcrumb {
+            &::before {
+                position: absolute;
+                left: -35px;
+                margin-right: 0;
+            }
+        }
     }
 }

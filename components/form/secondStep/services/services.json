@@ -1,0 +1,26 @@
+[
+    {
+        "titulo": "servicios brindados",
+        "type": "servicios",
+        "datos": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing."
+        ]
+    },
+    {
+        "titulo": "exclusiones",
+        "type": "exclusiones",
+        "datos": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing."
+        ]
+    }
+]

@@ -1,13 +1,6 @@
 @import 'variables';
 
 .submit {
-    border: none;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: 600;
-
     &:not([disabled]) {
         background: $main;
         color: white;
@@ -17,4 +10,17 @@
         background: $disabled;
         color: $gray;
     }
+}
+.mailbtn,
+.submit {
+    border: none;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.mailbtn {
+    color: $gray_hard;
+    background: white;
 }

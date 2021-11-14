@@ -50,6 +50,8 @@
         width: 100%;
         background-color: transparent;
         position: relative;
+        height: fit-content;
+
         &::after {
             content: '';
             width: 110%;

@@ -6,6 +6,11 @@ interface Props {
     disabled: boolean
 }
 
+interface BtnMail {
+    textButton: string
+    mail: string
+}
+
 export const Submitbtn = (props: Props) => {
     return (
         <button
@@ -15,5 +20,13 @@ export const Submitbtn = (props: Props) => {
         >
             {props.textButton}
         </button>
+    )
+}
+
+export const Mailbtn = (props: BtnMail) => {
+    return (
+        <a href={`mailto:${props.mail}`} className={styles.mailbtn}>
+            {props.textButton}
+        </a>
     )
 }

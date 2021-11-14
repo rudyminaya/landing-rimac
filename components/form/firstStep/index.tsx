@@ -6,13 +6,15 @@ import SelectDocument from '../input'
 import { Submitbtn } from '../../tools/button'
 import BreadCrumb from '../breadcrumb'
 
-interface IDatosPersonales {
-    numDocumento: string
-    nombres: string
-    apellidoPaterno: string
-    apellidoMaterno: string
-    fecNacimiento: string
-    sexo: string
+interface Props {
+    datos?: {
+        numDocumento: string
+        nombres: string
+        apellidoPaterno: string
+        fecNacimiento: string
+        sexo: string
+    }
+    nombre: string
 }
 
 type Inputs = {
@@ -25,32 +27,9 @@ type Inputs = {
     asegurado: boolean
 }
 
-const FirstStep = () => {
-    const [datosPersonales, setDatosPersonales] = useState<IDatosPersonales>()
-    const [nombreCorto, setNombreCorto] = useState('')
-
-    useEffect(() => {
-        fetch('https://freestyle.getsandbox.com/dummy/obtenerdatospersona', {
-            method: 'POST',
-        })
-            .then((res) => res.json())
-            .then((datos) => {
-                setDatosPersonales({
-                    numDocumento: datos.data.tercero.numDocumento,
-                    nombres: datos.data.tercero.nombres.toLowerCase(),
-                    apellidoPaterno:
-                        datos.data.tercero.apellidoPaterno.toLowerCase(),
-                    apellidoMaterno:
-                        datos.data.tercero.apellidoMaterno.toLowerCase(),
-                    fecNacimiento: datos.data.tercero.fecNacimiento,
-                    sexo: datos.data.tercero.sexo,
-                })
-                const primerNombre = datos.data.tercero.nombres
-                    .toLowerCase()
-                    .split(' ')[0]
-                setNombreCorto(primerNombre)
-            })
-    }, [])
+const FirstStep = (props: Props) => {
+    const datosPersonales = props.datos
+    const nombreCorto = props.nombre
 
     useEffect(() => {}, [datosPersonales])
 
@@ -227,6 +206,12 @@ const FirstStep = () => {
                     <label htmlFor="me">Solo a mí</label>
                 </div>
                 <div className={styles.form__checkRadio}>
+                    {errors.asegurado && (
+                        <div className={styles.form__errors}>
+                            <p> ● Selecciona una opción para continuar</p>
+                        </div>
+                    )}
+
                     <input
                         type="radio"
                         className={styles.radio}
