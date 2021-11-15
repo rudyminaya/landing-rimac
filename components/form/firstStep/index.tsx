@@ -11,10 +11,12 @@ interface Props {
         numDocumento: string
         nombres: string
         apellidoPaterno: string
+        apellidoMaterno: string
         fecNacimiento: string
         sexo: string
     }
     nombre: string
+    onClick: any
 }
 
 type Inputs = {
@@ -28,10 +30,11 @@ type Inputs = {
 }
 
 const FirstStep = (props: Props) => {
-    const datosPersonales = props.datos
-    const nombreCorto = props.nombre
+    let datosPersonales = props.datos
 
-    useEffect(() => {}, [datosPersonales])
+    const [state, setState] = useState<boolean>(false)
+
+    const nombreCorto = props.nombre
 
     const {
         register,
@@ -39,7 +42,7 @@ const FirstStep = (props: Props) => {
         formState: { errors },
     } = useForm<Inputs>()
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<Inputs> = (data) => setState(true)
 
     return (
         <form
@@ -68,7 +71,6 @@ const FirstStep = (props: Props) => {
                         }
                         disabled={datosPersonales && true}
                         {...register('ndoi', {
-                            required: true,
                             minLength: 8,
                             maxLength: 8,
                             valueAsNumber: true,
@@ -90,7 +92,6 @@ const FirstStep = (props: Props) => {
                     }
                     disabled={datosPersonales && true}
                     {...register('nombres', {
-                        required: true,
                         minLength: 2,
                         maxLength: 50,
                     })}
@@ -110,7 +111,6 @@ const FirstStep = (props: Props) => {
                     }
                     disabled={datosPersonales && true}
                     {...register('apellidoPaterno', {
-                        required: true,
                         minLength: 2,
                         maxLength: 50,
                     })}
@@ -130,7 +130,6 @@ const FirstStep = (props: Props) => {
                     }
                     disabled={datosPersonales && true}
                     {...register('apellidoMaterno', {
-                        required: true,
                         minLength: 2,
                         maxLength: 50,
                     })}
@@ -147,9 +146,7 @@ const FirstStep = (props: Props) => {
                     placeholder=""
                     value={datosPersonales ? datosPersonales.fecNacimiento : ''}
                     disabled={datosPersonales && true}
-                    {...register('date', {
-                        required: true,
-                    })}
+                    {...register('date')}
                 />
                 <label className={styles.label} htmlFor="date">
                     Fecha de Nacimiento
@@ -161,16 +158,16 @@ const FirstStep = (props: Props) => {
                     <input
                         type="radio"
                         className={styles.radio}
-                        id="masculino"
-                        defaultChecked={
+                        id="M"
+                        checked={
                             datosPersonales
-                                ? datosPersonales.sexo === 'M'
+                                ? datosPersonales.sexo == 'M'
                                     ? true
                                     : false
-                                : false
+                                : null
                         }
                         disabled={true}
-                        {...register('sexo', { required: true })}
+                        {...register('sexo')}
                     />
                     <label htmlFor="masculino">Masculino</label>
                 </div>
@@ -178,16 +175,16 @@ const FirstStep = (props: Props) => {
                     <input
                         type="radio"
                         className={styles.radio}
-                        id="femenino"
-                        defaultChecked={
+                        id="F"
+                        checked={
                             datosPersonales
-                                ? datosPersonales.sexo === 'F'
+                                ? datosPersonales.sexo == 'F'
                                     ? true
                                     : false
-                                : false
+                                : null
                         }
                         disabled={true}
-                        {...register('sexo', { required: true })}
+                        {...register('sexo')}
                     />
                     <label htmlFor="femenino">Femenino</label>
                 </div>
@@ -200,6 +197,8 @@ const FirstStep = (props: Props) => {
                     <input
                         type="radio"
                         className={styles.radio}
+                        defaultChecked={true}
+                        value="me"
                         id="me"
                         {...register('asegurado', { required: true })}
                     />
@@ -215,13 +214,18 @@ const FirstStep = (props: Props) => {
                     <input
                         type="radio"
                         className={styles.radio}
+                        value="family"
                         id="family"
                         {...register('asegurado', { required: true })}
                     />
                     <label htmlFor="family">A mí y a mi familia</label>
                 </div>
             </div>
-            <Submitbtn disabled={true} textButton="Continuar >" />
+            <Submitbtn
+                disabled={false}
+                onClick={state && props.onClick}
+                textButton="Continuar >"
+            />
         </form>
     )
 }

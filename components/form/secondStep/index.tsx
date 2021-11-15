@@ -14,19 +14,21 @@ interface Props {
         nombres: string
     }
     nombre: string
+    onClick: any
 }
 
 type Inputs = {}
 
 const SecondStep = (props: Props) => {
     const nombreCorto = props.nombre
+    const [state, setState] = useState(false)
 
     const {
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+    const onSubmit: SubmitHandler<Inputs> = (data) => setState(true)
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.steps}>
@@ -58,7 +60,11 @@ const SecondStep = (props: Props) => {
                     mail="mail@mail.com"
                     textButton="Enviar cotización por correo"
                 />
-                <Submitbtn disabled={false} textButton="Comprar plan" />
+                <Submitbtn
+                    onClick={props.onClick}
+                    disabled={false}
+                    textButton="Comprar plan"
+                />
             </div>
         </form>
     )

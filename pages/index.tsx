@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Features from '../components/features'
-import Form from '../components/form'
+import Register from '../components/register'
 import styles from '../styles/home.module.scss'
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
             </Head>
             <div className={styles.home}>
                 <Features />
-                <Form />
+                <Register />
             </div>
         </>
     )

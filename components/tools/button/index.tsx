@@ -5,6 +5,7 @@ import styles from '../../../styles/buttons.module.scss'
 interface Props {
     textButton: string
     disabled: boolean
+    onClick: any
 }
 
 interface BtnMail {
@@ -21,6 +22,7 @@ export const Submitbtn = (props: Props) => {
     return (
         <button
             type="submit"
+            onClick={props.onClick}
             disabled={props.disabled}
             className={styles.submit}
         >
@@ -39,7 +41,7 @@ export const Mailbtn = (props: BtnMail) => {
 
 export const Homebtn = (props: Home) => {
     return (
-        <Link href={props.link}>
+        <Link href={props.link} passHref>
             <a className={styles.homebtn}>{props.textLink}</a>
         </Link>
     )

@@ -279,4 +279,11 @@
             }
         }
     }
+    .register {
+        padding-top: 60px;
+
+        & button {
+            margin-left: auto;
+        }
+    }
 }

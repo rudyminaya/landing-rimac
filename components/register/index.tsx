@@ -1,9 +1,10 @@
-import React from 'react'
-import styles from '../../../styles/form.module.scss'
-import SelectDocument from '../input'
-import Title, { Subtitle } from '../../tools/title'
-import { Submitbtn } from '../../tools/button'
+import React, { useEffect, useState } from 'react'
+import styles from '../../styles/form.module.scss'
+import SelectDocument from '../form/input'
+import Title, { Subtitle } from '../tools/title'
+import { Submitbtn } from '../tools/button'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { useRouter } from 'next/dist/client/router'
 
 type Inputs = {
     ndoi: string
@@ -13,6 +14,15 @@ type Inputs = {
     tycpolitica: string
 }
 
+/* function Redirect({ to }) {
+    const router = useRouter()
+    useEffect(() => {
+        router.push(to)
+    }, [to])
+
+    return null
+} */
+
 const Register = () => {
     let today = new Date()
     let day = today.getDate()
@@ -20,12 +30,30 @@ const Register = () => {
     let year = today.getFullYear()
     let maxfecha = `${year}-${month}-${day}`
 
+    const [state, setState] = useState<boolean>(false)
+    const [btn, setBtn] = useState<boolean>(false)
+    const [datos, setDatos] = useState({
+        doi: '',
+        ndoi: '',
+        date: '',
+        celular: '',
+        tycdatos: false,
+        tycpolitica: false,
+    })
+
+    const changeInput = (e: any) => {
+        console.log(e.target.value)
+    }
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+
+    const onSubmit: SubmitHandler<Inputs> = () => router.push('/plan-a-medida')
+
+    const router = useRouter()
 
     const errores = Object.keys(errors).map((v: string) => {
         switch (v) {
@@ -64,6 +92,7 @@ const Register = () => {
                         className={styles.text}
                         id="ndoi"
                         placeholder=" "
+                        onChange={changeInput}
                         {...register('ndoi', {
                             required: true,
                             minLength: 8,
@@ -83,6 +112,7 @@ const Register = () => {
                     id="date"
                     placeholder=""
                     defaultValue=""
+                    onChange={changeInput}
                     max={maxfecha}
                     {...register('date', {
                         required: true,
@@ -98,6 +128,7 @@ const Register = () => {
                     className={styles.text}
                     id="celular"
                     placeholder=" "
+                    onChange={changeInput}
                     {...register('celular', {
                         required: true,
                         minLength: 9,
@@ -113,6 +144,7 @@ const Register = () => {
                     type="checkbox"
                     className={styles.checkbox}
                     id="tycdatos"
+                    onChange={changeInput}
                     {...register('tycdatos', { required: true })}
                 />
                 <label htmlFor="tycdatos">
@@ -128,6 +160,7 @@ const Register = () => {
                     type="checkbox"
                     className={styles.checkbox}
                     id="tycpolitica"
+                    onChange={changeInput}
                     {...register('tycpolitica', { required: false })}
                 />
                 <label htmlFor="tycpolitica">
@@ -137,7 +170,7 @@ const Register = () => {
                     </a>
                 </label>
             </div>
-            <Submitbtn disabled={false} textButton="Comencemos" />
+            <Submitbtn disabled={btn} onClick={null} textButton="Comencemos" />
         </form>
     )
 }
