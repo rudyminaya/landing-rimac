@@ -11,7 +11,13 @@ interface Props {
 }
 
 interface Details {
-    data: { icon: ''; type: ''; coverage: ''; benefits: []; nobenefits: [] }
+    data: {
+        icon: string
+        type: string
+        coverage: string
+        benefits: string[]
+        nobenefits: string[]
+    }
 }
 
 type Inputs = {

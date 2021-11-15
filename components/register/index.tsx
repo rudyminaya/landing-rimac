@@ -14,15 +14,6 @@ type Inputs = {
     tycpolitica: string
 }
 
-/* function Redirect({ to }) {
-    const router = useRouter()
-    useEffect(() => {
-        router.push(to)
-    }, [to])
-
-    return null
-} */
-
 const Register = () => {
     let today = new Date()
     let day = today.getDate()
@@ -30,7 +21,6 @@ const Register = () => {
     let year = today.getFullYear()
     let maxfecha = `${year}-${month}-${day}`
 
-    const [state, setState] = useState<boolean>(false)
     const [btn, setBtn] = useState<boolean>(false)
     const [datos, setDatos] = useState({
         doi: '',
@@ -40,10 +30,6 @@ const Register = () => {
         tycdatos: false,
         tycpolitica: false,
     })
-
-    const changeInput = (e: any) => {
-        console.log(e.target.value)
-    }
 
     const {
         register,
@@ -92,7 +78,6 @@ const Register = () => {
                         className={styles.text}
                         id="ndoi"
                         placeholder=" "
-                        onChange={changeInput}
                         {...register('ndoi', {
                             required: true,
                             minLength: 8,
@@ -112,7 +97,6 @@ const Register = () => {
                     id="date"
                     placeholder=""
                     defaultValue=""
-                    onChange={changeInput}
                     max={maxfecha}
                     {...register('date', {
                         required: true,
@@ -128,7 +112,6 @@ const Register = () => {
                     className={styles.text}
                     id="celular"
                     placeholder=" "
-                    onChange={changeInput}
                     {...register('celular', {
                         required: true,
                         minLength: 9,
@@ -144,7 +127,6 @@ const Register = () => {
                     type="checkbox"
                     className={styles.checkbox}
                     id="tycdatos"
-                    onChange={changeInput}
                     {...register('tycdatos', { required: true })}
                 />
                 <label htmlFor="tycdatos">
@@ -160,7 +142,6 @@ const Register = () => {
                     type="checkbox"
                     className={styles.checkbox}
                     id="tycpolitica"
-                    onChange={changeInput}
                     {...register('tycpolitica', { required: false })}
                 />
                 <label htmlFor="tycpolitica">

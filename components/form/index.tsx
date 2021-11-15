@@ -14,23 +14,12 @@ interface IDatosPersonales {
     sexo: string
 }
 
-const Form = (props: Props) => {
+const Form = () => {
     const [datosPersonales, setDatosPersonales] = useState<IDatosPersonales>()
     const [nombreCorto, setNombreCorto] = useState('')
     const [first, setFirst] = useState<boolean>(true)
     const [second, setSecond] = useState<boolean>(false)
     const [thanks, setThanks] = useState<boolean>(false)
-
-    const watch = async () => {
-        setSecond(!second)
-        await setFirst(!first)
-    }
-
-    const watchThanks = async () => {
-        setThanks(!thanks)
-        await setSecond(!second)
-    }
-    console.log(first, second, thanks)
     useEffect(() => {
         fetch('https://freestyle.getsandbox.com/dummy/obtenerdatospersona', {
             method: 'POST',
@@ -70,7 +59,13 @@ const Form = (props: Props) => {
                 : ''}
             {second
                 ? second && (
-                      <SecondStep nombre={nombreCorto} onClick={watchThanks} />
+                      <SecondStep
+                          nombre={nombreCorto}
+                          onClick={async () => {
+                              setThanks(!thanks)
+                              await setSecond(!second)
+                          }}
+                      />
                   )
                 : ''}
 
