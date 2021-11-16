@@ -4,7 +4,12 @@ import FirstStep from './firstStep'
 import SecondStep from './secondStep'
 import Thanks from './thanks'
 
-interface Props {}
+enum Paso {
+    PRIMERO = 'primero',
+    SEGUNDO = 'segundo',
+    GRACIAS = 'gracias',
+}
+
 interface IDatosPersonales {
     numDocumento: string
     nombres: string
@@ -17,9 +22,7 @@ interface IDatosPersonales {
 const Form = () => {
     const [datosPersonales, setDatosPersonales] = useState<IDatosPersonales>()
     const [nombreCorto, setNombreCorto] = useState('')
-    const [first, setFirst] = useState<boolean>(true)
-    const [second, setSecond] = useState<boolean>(false)
-    const [thanks, setThanks] = useState<boolean>(false)
+    const [paso, setPaso] = useState<Paso>(Paso.PRIMERO)
     useEffect(() => {
         fetch('https://freestyle.getsandbox.com/dummy/obtenerdatospersona', {
             method: 'POST',
@@ -43,35 +46,39 @@ const Form = () => {
             })
     }, [])
 
-    return (
-        <div className={styles.form}>
-            {first
-                ? first && (
-                      <FirstStep
-                          datos={datosPersonales}
-                          nombre={nombreCorto}
-                          onClick={async () => {
-                              setSecond(!second)
-                              await setFirst(!first)
-                          }}
-                      />
-                  )
-                : ''}
-            {second
-                ? second && (
-                      <SecondStep
-                          nombre={nombreCorto}
-                          onClick={async () => {
-                              setThanks(!thanks)
-                              await setSecond(!second)
-                          }}
-                      />
-                  )
-                : ''}
+    switch (paso) {
+        case Paso.PRIMERO:
+            return (
+                <div className={styles.form}>
+                    <FirstStep
+                        datos={datosPersonales}
+                        nombre={nombreCorto}
+                        onClick={() => {
+                            setPaso(Paso.SEGUNDO)
+                        }}
+                    />
+                </div>
+            )
 
-            {thanks ? thanks && <Thanks /> : ''}
-        </div>
-    )
+        case Paso.SEGUNDO:
+            return (
+                <div className={styles.form}>
+                    <SecondStep
+                        nombre={nombreCorto}
+                        onClick={() => {
+                            setPaso(Paso.GRACIAS)
+                        }}
+                    />
+                </div>
+            )
+
+        case Paso.GRACIAS:
+            return (
+                <div className={styles.form}>
+                    <Thanks />
+                </div>
+            )
+    }
 }
 
 export default Form

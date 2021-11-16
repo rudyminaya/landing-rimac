@@ -5,7 +5,6 @@ import styles from '../../../styles/buttons.module.scss'
 interface Props {
     textButton: string
     disabled: boolean
-    onClick: any
 }
 
 interface BtnMail {
@@ -22,7 +21,6 @@ export const Submitbtn = (props: Props) => {
     return (
         <button
             type="submit"
-            onClick={props.onClick}
             disabled={props.disabled}
             className={styles.submit}
         >

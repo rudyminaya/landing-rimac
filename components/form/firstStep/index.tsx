@@ -32,8 +32,6 @@ type Inputs = {
 const FirstStep = (props: Props) => {
     let datosPersonales = props.datos
 
-    const [state, setState] = useState<boolean>(false)
-
     const nombreCorto = props.nombre
 
     const {
@@ -42,7 +40,9 @@ const FirstStep = (props: Props) => {
         formState: { errors },
     } = useForm<Inputs>()
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => setState(true)
+    const onSubmit: SubmitHandler<Inputs> = () => {
+        props.onClick()
+    }
 
     return (
         <form
@@ -221,11 +221,7 @@ const FirstStep = (props: Props) => {
                     <label htmlFor="family">A mí y a mi familia</label>
                 </div>
             </div>
-            <Submitbtn
-                disabled={false}
-                onClick={state && props.onClick}
-                textButton="Continuar >"
-            />
+            <Submitbtn disabled={false} textButton="Continuar >" />
         </form>
     )
 }
